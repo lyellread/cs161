@@ -1,0 +1,32 @@
+# CS161 - LECTURE 2 - 09/24/2018 #
+
+Chapter: 1
+
+Defenitions
+Hex (Hexadecimal): 16 possible values per digit (0-9 && A-F ~~ 0-F)
+Bits: each binary digit
+Byte: 8 bits (digits of binary) next to each other
+Signation: Signed number (+/-), i.e. "with a sign on the number"
+2's Complement: If using a signation-determining bit at the start of a number, you would wnd up with possibly a +0 and a -0. Therefore we use procedure: "2's complement". See Concept entry for 2's complement calculation.
+Naming Conventions: Binary number 0b0010100101, Hex number: 0x0f04a3
+Overflow: What happens when you can only store n bits, and as a result of an operation, the amount of bits required to store the result is >n.
+Compiler: Turns english code into binary that the computer can make better use of.
+End_Defenitions
+
+Concepts
+BIN to DEC Converison Example: 100000 BASE 2 (binary) --> DEC: 1*2^5 + 0*2^4 + 0*2^3 + 0*2^2 + 0*2^1 + 0*2^1 = 32+0+0+0+0+0 = 32 therefore decimal value of binary 100000 is 32.
+DEC to BIN Conversion Example: 35 BASE 10 (decimal) --> BIN: 100011 because in 35 there are 1*2^5 + 0*2^4 + 0*2^3 + 0*2^2 + 1*2^1 + 1*2^0 therefore 100011
+HEX to DEC Conversion Example: f base 16 (hex) --> BIN: f*16^0 = f*1 f is 15th digit, so = 15
+Most Unsigned Numbers Representable by a Byte (8 bits): 255 (00000001 - 11111111) + 1 (00000000) = 256 = 2^8
+Most Signed numbers Representable by a Byte (8 bits): Depends... If we set the first digit to be the sign determinant binary digit, then there are 2^7 possibilities in positive and negative BUT THIS IS NOT HOW ITS DONE (see 2's complement)
+2's Complement Calculation: for BIN 00101 (DEC 5) - Steps: [1]: Invert all bits (00101 --> 11010), [2]: Add 1: (11010 + 1 --> 11011). Therefore -5 is represented as 11011.
+
+End_Concepts
+
+Notes
+Arrays start at Zero... is this reddit?
+End_Notes
+
+Files
+
+End_Files

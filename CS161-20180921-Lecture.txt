@@ -1,0 +1,28 @@
+# CS161 - LECTURE 1 - 9/21/2018 #
+
+Chapter: 1
+
+Definitions
+Computational Device: Is something that computes (Input --> Process --> Output) && can be programmed to carry out an algorithm.
+Computer Science: Varied topics... OS, Languages, Algorithms...
+Algorithm: Step by Step description of how to accomplish a task (like a recipe)
+Computer: Machine that manipulates data and carries out instructions
+Hardware: Includes registers, cache, computer hardware, ...
+Software: Operating System, Drivers, ...
+Operating System: Interaction between an applications, programs and the hardware
+Applications: Software (i.e. fortnite, Adobe ...)
+Binary: Uses: (0,1)
+End_Defenitions
+
+Concepts
+Programming "sequence": Define the problem ("Problem Statement") --> Solve the Problem --> Specify the algorithm --> Turn the algorithm into computer code
+Primary piece of software on a computer: Operating System
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
