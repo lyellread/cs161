@@ -1,0 +1,65 @@
+# CS161 - LAB 1 - 09/25/2018 #
+
+Chapter: NA
+
+Defenitions
+
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+Answers to the questions in the lab:
+
+Question 1: What happens when you forget the semicolon at the end of the cout
+statement? Be specific. (i.e.: std::cout << “Hello World!” << std::endl)
+
+hello.cpp: In function ‘int main()’:
+hello.cpp:6:2: error: expected ‘;’ before ‘return’
+  return 0;
+  ^
+
+Compiling fails, as it expects a semicolon.
+
+Question 2: What happens when you forget to include iostream, i.e. remove #include
+<iostream> from the program? Be specific.
+
+hello.cpp:5:2: error: ‘cout’ is not a member of ‘std’
+  std::cout << "Heyo World!" << std::endl;
+  ^
+hello.cpp:5:32: error: ‘endl’ is not a member of ‘std’
+  std::cout << "Heyo World!" << std::endl;
+                                ^
+Compiling fails as it was expecting the iostream library.
+
+Question 3: What happens when you remove the << std::endl? What is the difference in
+having it and not having it? (i.e.: std::cout << “Hello World!”;)
+
+Removing the endline will remove the newline character after the output. This results in:
+
+Heyo World!flip2 ~/labs/lab1 55$
+
+instead of:
+
+Heyo World!
+flip2 ~/labs/lab1 47$
+
+Question 4: What is the difference between the first and second program you wrote?
+
+The first one just prints, while the second takes a user input and prints that value.
+
+Question 5: What happens if you mix the direction of >> with the cin? Be specific. (i.e.: std::cin << number;)
+
+Alot of errors print. This is because instead of trying to define the variable from the input, I would be trying to define the input from a blank variable (why on earth?).
+
+Question 6: Why do you need to create a variable to display a number entered by the user?
+
+Because you have to designate and allocate 'space' (a buffer somewhere) to contain the number.
+End_Notes
+
+Files
+hello.cpp
+lab-1.pdf
+End_Files
