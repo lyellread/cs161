@@ -1,4 +1,4 @@
-# CS161 - LECTURE 2 - 09/24/2018 #
+# CS161 - LECTURE 3 - 09/26/2018 #
 
 Chapter: 1
 
