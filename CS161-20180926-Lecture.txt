@@ -1,0 +1,34 @@
+# CS161 - LECTURE 2 - 09/24/2018 #
+
+Chapter: 1
+
+Defenitions
+Main Function: int main () { ... } this is where code starts execution
+Comments (single line): //yourcomment here ...
+Comments (multi-line): /* lalalalala \n lalalalala \n lalallalala*/
+Strings: String literals are denoted by "string" (quotes). 
+Special Display "Escape" Characters: newline: \n, tab: \t.
+Literal Value: some fixed value, i.e. 452
+Variable: Container to contain changing things.
+Primitive (defaut) Types: Int (whole number), Float (Decimal "floating point" number), Double (is twice as long as a float), Long (long-sized integer), Short (default, 4- byte integer var), Char (single character, 's' '!' with single quotes!) Bool (T/F)
+Constant Variables: They don't change (duh). Defined as: "#define VAR_NAME <var_value>" This is same as "const int VAR_NAME <var_size>"
+End_Defenitions
+
+Concepts
+Using a namespace: "using namespace std" will append std:: to the start of all commands (i.e. cout, cin ...)
+Return Values: "return 0" will return a successful completion. return (*!0) will return some error code.
+Declaring Variables: char letter_grade; ... int number_of_students;
+Variable Assignment: [1] int my_num; [2] my_num=5; OR [1] int my_num=5;
+Integer vs Float Arithmetic: Ex. cout 8/3 will truncate remainder off. cout 3.0/8.0 will create a float.
+End_Concepts
+
+Notes
+Use "using namespace std" will make the use of (ex) cout the same as std::cout without the "using namespace std"
+CS161 has to follow the style guide. See https://github.com/dunklastarn/OSU-CS161-DOCS/blob/master/c%2B%2B-style.pdf for the style document
+When defining a function (i.e. int main () { ... } ) the 'int' there refers to the returned type.
+Limits library could be helpful... 
+End_Notes
+
+Files
+
+End_Files
