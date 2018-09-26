@@ -57,9 +57,11 @@ Alot of errors print. This is because instead of trying to define the variable f
 Question 6: Why do you need to create a variable to display a number entered by the user?
 
 Because you have to designate and allocate 'space' (a buffer somewhere) to contain the number.
+
+LAB GUIDE HERE: https://github.com/dunklastarn/OSU-CS161-DOCS/blob/master/lab-1.pdf
+
 End_Notes
 
 Files
 hello.cpp
-lab-1.pdf
 End_Files
