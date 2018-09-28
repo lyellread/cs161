@@ -1,0 +1,28 @@
+# CS161 - LECTURE 4 - 09/27/2018 #
+
+Chapter: 1
+
+Defenitions
+Macros: Constants, defined as #define MAX_SIZE 100
+Constant: Define as "const int MAX_SIZE = 100
+if Statement: if (condition){result}
+else if Statement: else if (condition) {...}
+else Statement: else{...}
+Conditional Operators: ==, <=, >= , >, <, !=, || (or), &&, !
+End_Defenitions
+
+Concepts
+Shortcut Operations (basic): var=var+2 ~ var +=2; var=var*2 ~ var *=2
+Increments (++): var++ = var+=1 = var=var+1; 
+Typecasting: (type) var will use var as type. (int)(5/2.0) = 2; Casting is temporary, not permanent.
+End_Concepts
+
+Notes
+Unsigned Max Value Calculation (n bits): -1+2^n (you have 2^n values, but one is 0)
+Signed Minimum (n bits): -(2^n)/2
+Signed Maximum (n bits): ((2^n)/2)-2
+End_Notes
+
+Files
+
+End_Files
