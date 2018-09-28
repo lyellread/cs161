@@ -1,0 +1,47 @@
+Lyell Read - Recitation 1 Take Home Quiz
+
+1. Choose 3 guidelines and describe why they mean alot to you:
+
+ - Think through and re-read your comments before presenting them: One of the things I value is preparation. Preparing for this both looks good, as I'll be able to present better to a TA, while it also shows respect for the TA because it shows that I took measures to limit the amount of their time I am taking up with the presentation. I chose this guideline because it is both respectful and core to my philosophy of preparedness.
+ - Disagree with ideas, but do not make personal attacks: I believe strongly in cooperative disagreement (or constructive criticism). This forms the foundation for a questioning method of learning. That said, personal attacks are the opposite of productive - they do not get the perpetrator anywhere productive, while making the victim uncomfortable.
+ - Be willing to change: Change is necessary to life. Changing jobs, changing study habits and learning habits are all part of growth. I chose this because to grow and evolve, and eventually improve, the ability to change must be mastered.
+
+2. Late Assignment Policy
+
+Late assignments are assignments that are submitted after the deadline, usually a sunday. In total, I have 5 "free late days" which I can use either all as one (and get a 5-day reprieve on an assignment deadline) or individaully (and get multiple smaller deadline 'breaks').
+
+3. Scheduling Demos
+
+To schedule a demo, use the link under TA Office Hours under the Grading Hours column to choose a time. 
+
+4. What happens if you miss/resched a demo with a TA
+
+ - Missing a demo: 10 point deduction
+ - Reschedule: send an email to TA with subject "CS161 Cancel Demo" and reschedule.
+
+5. What happens if you demo an assignment past two weeks past the due date:
+
+50 pt deduction
+
+6. Not compiling :(
+
+$PROJECT_GRADE = 0
+
+7. Miss lab, rec or lec who to email + subject
+
+ - Lab: Instructor + Lab TA, subject "CS161 LAB"
+ - Lecture: Email instructor with subject "CS161 Attendance"
+ - Recitation: Instructor + Recitation TA, subject "CS161 Recitation Attendance"
+
+8. Designs
+
+Submitted to Canvas 1 week prior to due date for assignment. Listing posted under Assignments tab. 
+
+9. Late designs
+
+Late up to 5 days are accepted full credit. Critique grade (peer review) will be 0, though, after the deadline.
+
+10. Design, Critique point worth
+
+Design: .4*$RECITATION_POINTS = 40% Recitation grade
+Critique = .2*$RECITATION_POINTS = 20% Recitation Grade
