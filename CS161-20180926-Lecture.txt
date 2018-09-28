@@ -27,6 +27,11 @@ Use "using namespace std" will make the use of (ex) cout the same as std::cout w
 CS161 has to follow the style guide. See https://github.com/dunklastarn/OSU-CS161-DOCS/blob/master/c%2B%2B-style.pdf for the style document
 When defining a function (i.e. int main () { ... } ) the 'int' there refers to the returned type.
 Limits library could be helpful... 
+
+NOTE:
+0BASE2 - 1 = 11111111BASE2 = 255BASE10
+Signed: includes all integers -128-->127.
+In signed 10000000 = -128 because otherwise it would be a redundant value for 0. Thus, -128+1 goes to -127 manually (special case)
 End_Notes
 
 Files
