@@ -21,7 +21,7 @@ End_Concepts
 Notes
 Unsigned Max Value Calculation (n bits): -1+2^n (you have 2^n values, but one is 0)
 Signed Minimum (n bits): -(2^n)/2
-Signed Maximum (n bits): ((2^n)/2)-2
+Signed Maximum (n bits): ((2^n)/2)-1
 End_Notes
 
 Files
