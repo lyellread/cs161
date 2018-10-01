@@ -109,7 +109,54 @@ void nBytes (int byteCount) {
 
 	//Min Unsigned (0): Just 0. This is stored as INT_ALL_MIN
 
-	cout << "+Min Unsigned:  " << INT_ALL_MIN << endl; 
+	int unsignedMin = INT_ALL_MIN;
+	
+	cout << "+Min Unsigned:  " << unsignedMin << endl;
+
+	
+	// Subtract 1 from Mins and add 1 to maxs "Wrong Calculation"
+
+
+	cout << "\n\nOverflowing values by 1 using +/- on variables:\n---------------------" << endl;
+
+	// Max Signed
+	
+	cout << "+Max Signed + 1:    " << signedMax + 1 << endl;
+
+	// Min Signed
+
+	cout << "+Min Signed - 1:    " << signedMin - 1 << endl;
+
+	// Max Unsigned
+	
+	cout << "+Max Unsigned + :   " << unsignedMax + 1 << endl;
+
+	// Min Unsigned
+	
+	cout << "+Min Unsigned - 1: " << unsignedMin - 1 << endl;
+
+
+
+	// Subtract 1 from Mins and add 1 to maxs the manual but right way
+
+
+	cout << "\n\nOverflowing values by 1 ''manually'':\n---------------------" << endl;
+
+	// Max Signed
+	
+	cout << "+Max Signed + 1:   -" << signedMin << endl;
+
+	// Min Signed
+
+	cout << "+Min Signed - 1:    " << signedMax << endl;
+
+	// Max Unsigned
+	
+	cout << "+Max Unsigned + :   " << unsignedMin << endl;
+
+	// Min Unsigned
+	
+	cout << "+Min Unsigned - 1:  " << unsignedMax << endl;
 
 
 }
