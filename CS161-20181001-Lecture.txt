@@ -1,0 +1,22 @@
+# CS161 - LECTURE 5 - 10/01/2018 #
+
+Chapter: 1
+
+Defenitions
+Pre Increment/Decrement: var2=++var1 : var1 will be incremented then stored in var2
+Post Increment/Decrement: var2=var1-- : var1 will be stored into var2 and then var1 will be decremented. NOTE: var2 WILL NOT BE DECREMENTED!
+End_Defenitions
+
+Concepts
+Pre, Post Increments (++): Pre: ++<var>; Post: <var>++
+Pre, Post Decrements (--): Pre: --<var>; Post: <var>--
+Switch Statements: switch(expression){case1:, case2: default:...}
+End_Concepts
+
+Notes
+Variables and Scope: Variables exist only in the scope of the block they are created in. A block is {..}.
+End_Notes
+
+Files
+
+End_Files
