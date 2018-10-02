@@ -1,0 +1,51 @@
+CS161 LAB 2 Quiz
+
+## PART 1 : LINUX COMMANDS ##
+
+1. define ls, cd, vim, mkdir, pwd
+
+ls: Print contents of directory. Best used with -lah
+cd: Change Directory. Used as in cd /target/dir.../
+vim: Text editor.
+mkdir: Make a Directory
+pwd: Print working directory
+
+2. Create a new file, assign1.cpp, in a new directory, ~/assign/assign1. You can assume the assign directory already exists in your home (~) directory
+
+$cd (shorthand for cd ~/ or cd /home/username/)
+$mkdir ./assign/assign1 && cd ./assign/assign1/
+$vim assign1.cpp
+
+3. Vim commands i, Esc, :wq, :q
+
+After $vim yourfile
+i: INSERT mode - write, delete.
+Esc: Exit current operating mode (i.e. press Esc to escape INSERT mode)
+:wq: Write then quit
+:q: Just quit, don't save. Might have to use :q! to force.
+
+## PART 2 : MORE LINUX ##
+
+## PART # : PREP FOR ASSG 3 ##
+
+1. Compile and Run rand_numbers.cpp three times. What is output?
+
+234087257, 278781979
+2097916212, 2010798060
+723709685, 755678138
+
+2. Comment out srand() and run again three times. What do you get?
+
+1804289383, 846930866
+1804289383, 846930866
+1804289383, 846930866
+
+3. Add a second srand() and run three times. What happens?
+
+924605862, 924605862
+1395940143, 1395940143
+1090810056, 1090810056
+
+4. Using rand() % 5 will have output on 0..4:
+
+2, 0, 4
