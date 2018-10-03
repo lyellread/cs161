@@ -1,0 +1,24 @@
+
+# CS161 - LECTURE 6 - 10/03/2018 #
+
+Chapter: 1
+
+Defenitions
+Variable: Named location in memory
+Primitive Types: A type of data that the C++ compiler works with by default.
+Conditional: Code that only executes under certain conditions
+Relational Operator: Operators that can be used in a conditional expression (some include <, >, ==, || ...)
+Do While: is a do{.....}while(...);
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
