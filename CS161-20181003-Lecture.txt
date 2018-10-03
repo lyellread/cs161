@@ -8,7 +8,7 @@ Variable: Named location in memory
 Primitive Types: A type of data that the C++ compiler works with by default.
 Conditional: Code that only executes under certain conditions
 Relational Operator: Operators that can be used in a conditional expression (some include <, >, ==, || ...)
-Do While: is a do{.....}while(...);
+Do While: is a do{.....}while(...); A do loop always executes the loop once, checking the condition at the end, not start.
 End_Defenitions
 
 Concepts
@@ -16,7 +16,7 @@ Concepts
 End_Concepts
 
 Notes
-
+For the imminent test question: While loops evaluate the parameter before even running, while do while is guarenteed to run one loop before checking the parameter at the end of that code.
 End_Notes
 
 Files
