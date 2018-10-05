@@ -30,7 +30,7 @@ Limits library could be helpful...
 
 NOTE:
 0BASE2 - 1 = 11111111BASE2 = 255BASE10
-Signed: includes all integers -128-->127.
+Signed: includes all integers -128..127.
 In signed 10000000 = -128 because otherwise it would be a redundant value for 0. Thus, -128+1 goes to -127 manually (special case)
 End_Notes
 

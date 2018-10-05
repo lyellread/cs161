@@ -15,6 +15,7 @@ End_Concepts
 
 Notes
 Variables and Scope: Variables exist only in the scope of the block they are created in. A block is {..}.
+Quick tip on pre and post increment, the pre and post refer to the storage (i.e. pre-increment means increment pre-storage or before the variable is stored... if that makes any sense)
 End_Notes
 
 Files

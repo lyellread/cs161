@@ -19,7 +19,7 @@ DEC to BIN Conversion Example: 35 BASE 10 (decimal) --> BIN: 100011 because in 3
 HEX to DEC Conversion Example: f base 16 (hex) --> BIN: f*16^0 = f*1 f is 15th digit, so = 15
 Most Unsigned Numbers Representable by a Byte (8 bits): 255 (00000001 - 11111111) + 1 (00000000) = 256 = 2^8
 Most Signed numbers Representable by a Byte (8 bits): Depends... If we set the first digit to be the sign determinant binary digit, then there are 2^7 possibilities in positive and negative BUT THIS IS NOT HOW ITS DONE (see 2's complement)
-2's Complement Calculation: for BIN 00101 (DEC 5) - Steps: [1]: Invert all bits (00101 --> 11010), [2]: Add 1: (11010 + 1 --> 11011). Therefore -5 is represented as 11011.
+2's Complement Calculation (for encode an decode): for BIN 00101 (DEC 5) - Steps: [1]: Invert all bits (00101 --> 11010), [2]: Add 1: (11010 + 1 --> 11011). Therefore -5 is represented as 11011.
 
 End_Concepts
 
