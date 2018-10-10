@@ -1,15 +1,14 @@
 
-# CS161 - LECTURE 7 - 10/05/2018 #
+# CS161 - LECTURE 9 - 10/10/2018 #
 
 Chapter: 1
 
 Defenitions
-Strings: "a B c", "121 3" ...
-Length: var.length()
+Index: string_var[index] = char at index index of string string_var
 End_Defenitions
 
 Concepts
-Input Strings from User: defint mystr, getline(cin,mystr). Requires <string> library
+Function: <return type> <function name> (parameters) {...}
 End_Concepts
 
 Notes
