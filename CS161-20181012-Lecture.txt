@@ -1,0 +1,22 @@
+
+# CS161 - LECTURE 10 - 10/12/2018 #
+
+Chapter: 1
+
+Defenitions
+Function Declaration: just the first ine of the function, i.e. "void func ()"
+Function Defenition: the lines of code that make up the function.
+Function call: where you call the function from in the code.
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
