@@ -43,11 +43,11 @@ int main(){
 	char ascii_from_int;
 	int int_from_ascii;
 
-	ascii_from_int = i_to_a(67);
-	int_from_ascii = a_to_i('c');
+	ascii_from_int = i_to_a(99);
+	int_from_ascii = a_to_i('#');
 
-	cout << "The Ascii Value for int 67 is: " << ascii_from_int << "\n";
-	cout << "The Int value for the ascii 'c' is: " << int_from_ascii << "\n";
+	cout << "The Ascii Value for int 99 is: " << ascii_from_int << "\n";
+	cout << "The Int value for the ascii '#' is: " << int_from_ascii << "\n";
 	
 	return 1;
 
