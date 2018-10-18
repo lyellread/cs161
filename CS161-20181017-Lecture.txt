@@ -1,0 +1,21 @@
+
+# CS161 - LECTURE 11 - 10/17/2018 #
+
+Chapter: 1
+
+Defenitions
+Default Arguments: When a function that takes arguments has those arguments defined in the header (i.e. int func(double var=1.223, double jack = 0.999)) NOTE: If you want arguments to be able to be passed by the call still, those variables must be first, and the default args must be last!!
+Function Overloading: Making two functions that have the same name but different arguments. (either num or type)
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
