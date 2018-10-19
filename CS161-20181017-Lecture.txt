@@ -6,6 +6,11 @@ Chapter: 1
 Defenitions
 Default Arguments: When a function that takes arguments has those arguments defined in the header (i.e. int func(double var=1.223, double jack = 0.999)) NOTE: If you want arguments to be able to be passed by the call still, those variables must be first, and the default args must be last!!
 Function Overloading: Making two functions that have the same name but different arguments. (either num or type)
+Function Declaration: one line that has name and parameters.
+Function Defenition: The declaration and the code which that executes.
+Syntax Errors: Forgetting a semicolon, ...
+Logic Errors: When a function doesnt run like it should (i.e. incorrect parameter for a for loop, or returning the wrong result for a condition). 
+Runtime Error: Program will compile fine, but crash on execution. Dividing by 0 is an example. Usually involves dumping core.
 End_Defenitions
 
 Concepts
