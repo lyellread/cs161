@@ -1,0 +1,22 @@
+
+# CS161 - LECTURE 11 - 10/17/2018 #
+
+Chapter: 1
+
+Defenitions
+Parameters: The variables declared in the function declaration line
+Arguments: The values that are passed to the function, that then get stored into the parameter variables
+Block Scope: Scope included as part of an if or a loop.
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
