@@ -1,5 +1,5 @@
 
-# CS161 - LECTURE 11 - 10/17/2018 #
+# CS161 - LECTURE 12 - 10/19/2018 #
 
 Chapter: 1
 
