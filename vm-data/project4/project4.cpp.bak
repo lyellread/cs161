@@ -99,13 +99,13 @@ int input_character_check (string input){
 
 
 int input_structure_check(string input){
-	for (int index = 0; index<(input.length() - 2); index++){
-		if (((int(input[index]) == 42 || int(input[index]) == 43 || int(input[index]) == 45 || int(input[index]) == 47) && (int(input[index+1]) != 32)) || ((int(input[index])>=48 && int(input[index]) <=57) && (int(input[index + 1]) == 42 || int(input[index + 1]) == 43 || int(input[index + 1]) == 45 || int(input[index + 1]) == 47))){
-			cout << "ERROR - OPERATOR OR NUMBER NOT FOLLOWED BY A SPACE! BREAKING\n\n";
-			return 0; // operator or number not followed by a space
+	for (int index = 0; index<(input.length() - 1); index++){
+		if ((int(input[index]) == 42 || int(input[index]) == 43 || int(input[index]) == 45 || int(input[index]) == 47) && (int(input[index+1]) != 32)){
+			cout << "ERROR - OPERATOR NOT FOLLOWED BY A SPACE! BREAKING\n\n";
+			return 0; // operator not followed by a space
 		}
-		if (((int(input[index]) == 42 || int(input[index]) == 43 || int(input[index]) == 45 || int(input[index]) == 47) && (int(input[index+2]) == 42 || int(input[index+2]) == 43 || int(input[index+2]) == 45 || int(input[index+2]) == 47)) || ((int(input[index])>=48 && int(input[index]) <=57) && (int(input[index+1]) == 32) && (int(input[index+2])>=48 && int(input[index+2]) <=57))) {
-			cout << "ERROR - NUMBERS OR OPERATOR SEPARATED BY A SPACE :(\n\n";
+		if ((int(input[index])>=48 && int(input[index]) <=57) && (int(input[index + 1]) == 42 || int(input[index + 1]) == 43 || int(input[index + 1]) == 45 || int(input[index + 1]) == 47)) {
+			cout << "ERROR - NUMBER VALUE NOT FOLLOWED BY A SPACE! BREAKING\n\n";
 			return 0; // number not followed by a space
 		}
 	}
