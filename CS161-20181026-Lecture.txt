@@ -1,0 +1,21 @@
+
+# CS161 - LECTURE 13 - 10/19/2018 #
+
+Chapter: 1
+
+Defenitions
+Recursion: Calling one function from that same function in order to accomplish a problem. 
+Iteration: How we usually have coded, without recusrion and such.
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
