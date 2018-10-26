@@ -9,6 +9,11 @@
 *********************************************************************/
 
 
+
+//TODO: rework the eq input and evaluation, add a function to average grades unweighted
+
+
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -104,6 +109,7 @@ int input_structure_check(string input){
 			cout << "ERROR - OPERATOR OR NUMBER NOT FOLLOWED BY A SPACE! BREAKING\n\n";
 			return 0; // operator or number not followed by a space
 		}
+		if 
 		if (((int(input[index]) == 42 || int(input[index]) == 43 || int(input[index]) == 45 || int(input[index]) == 47) && (int(input[index+2]) == 42 || int(input[index+2]) == 43 || int(input[index+2]) == 45 || int(input[index+2]) == 47)) || ((int(input[index])>=48 && int(input[index]) <=57) && (int(input[index+1]) == 32) && (int(input[index+2])>=48 && int(input[index+2]) <=57))) {
 			cout << "ERROR - NUMBERS OR OPERATOR SEPARATED BY A SPACE :(\n\n";
 			return 0; // number not followed by a space
