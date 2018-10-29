@@ -1,0 +1,21 @@
+
+# CS161 - LECTURE 14 - 10/29/2018 #
+
+Chapter: 1
+
+Defenitions
+References: An alias to a variable. Declared as int a; int &reference = a; if a is changed, the reference changes as well. References are immutable. If you assign a value to a reference, it changes all the things (the original value and all references thereto).
+Pointers: the memory address for where a particuliar variable is stored. To pass an address: fxn(&var1, &var2), where the function defenition would read "fxn(int * a, int * b). That function would receive the respective pointers for var(1|2).
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+If you declare int &a, b; ONLY A WILL BE A REFERENCE
+End_Notes
+
+Files
+
+End_Files
