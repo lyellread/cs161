@@ -15,14 +15,17 @@ int fib (int &a, int &b, int n, int r) {
 }
 
 int main () {
-	int iteration;
-	cout << "ITERATIONS:";
-	cin >> iteration;
+
+	cout << "How many stairs:" << endl;
+	int count;
+	cin >> count;
+
+	int a=0;
+	int b=1;
+
 	int result;
+	result = fib(a, b, count-1, 0);
 	
-	int a = 0;
-	int b = 1;
-	
-	result=fib (a,b,iteration-1, 0);
-	cout << result << endl;
+	cout << result << endl;	
+
 }
