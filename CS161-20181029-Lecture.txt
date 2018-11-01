@@ -9,7 +9,8 @@ Pointers: the memory address for where a particuliar variable is stored. To pass
 End_Defenitions
 
 Concepts
-
+Syntax Things: calling a function with func(&a) if a is an int, will pass the memory address of a to func. 
+With pointer a (defined as int * a;) you can get the value of what a points to with *a (dereference)
 End_Concepts
 
 Notes
