@@ -3,7 +3,7 @@
 ** Program Filename:project4.cpp
 ** Author:Lyell C Read
 ** Date:10/23/2018
-** Description:A medle of a program. Can convert bin to dec. Can calculate weighted averages. Can evaluate equations as well.
+** Description:A medley of a program. Can convert bin to dec. Can calculate weighted averages. Can evaluate equations as well.
 ** Input:User input
 ** Output:Text output
 *********************************************************************/
@@ -13,39 +13,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <cstring>
 #include <climits>
 #include <ctime>
 #include <cstdlib>
 
 
 using namespace std;
-
-
-/*********************************************************************
-** Function:s_to_i
-** Description:string to integer
-** Parameters:string input
-** Pre-Conditions:na
-** Post-Conditions:na
-*********************************************************************/ 
-
-
-int s_to_i (string input){
-	int output = 0;
-	for (int str_index = 0; str_index < input.length(); str_index++){
-		
-		int multiplier = input.length() - (str_index + 1);
-		int working_digit = int(input[str_index]) - 48;
-		
-		for (int iterator = 0; iterator < multiplier; iterator++){
-			working_digit *= 10;
-		}//this works by usign ones, tens, hundreds...
-		
-		output += working_digit;
-	}
-	return output;
-
-}
 
 
 /*********************************************************************
@@ -70,110 +44,56 @@ int b_to_i (string input){
 
 
 /*********************************************************************
-** Function:input_character_check
-** Description:checks for illegal characters in input
-** Parameters:string input
+** Function:do_operation
+** Description:solves the operation of total (+|-|/|*) operate_by and total is passed by reference, so it can be a void
+** Parameters:double &total, char op, double operate_by
 ** Pre-Conditions:na
 ** Post-Conditions:na
 *********************************************************************/ 
 
 
-int input_character_check (string input){
-	for (int index = 0; index < input.length(); index++){
-		int current=int(input[index]);
-		if (!((current == 32 || current == 42 || current == 43 || current == 45 || current == 47) || (current >= 48 && current <= 57))){
-			return 0;
-		}
+void do_operation (double &total, char op, double operate_by){
+	if (op == '+') total += operate_by;
+	if (op == '-') total -= operate_by;
+	if (op == '/') total /= operate_by;
+	if (op == '*') total *= operate_by;
+}
+
+
+/*********************************************************************
+** Function:evaluate
+** Description:called by evaluate, evaluates the equation
+** Parameters:string str (the equation)
+** Pre-Conditions:na
+** Post-Conditions:na
+*********************************************************************/ 
+
+
+int evaluate(string str){
+	
+	char cstr[str.size()+1]; char * pch; bool operand=true; double total=0; char op;
+
+	strcpy(cstr, str.c_str()); pch = strtok(cstr, " ");
+	if (string(pch).find_first_not_of("1234567890-.")== string::npos && string(pch) != "-") total += stod(pch);
+	else {cout << "INVALID VALUE:" << pch << endl; return 0;}
+	
+	pch=strtok(NULL, " ");
+	while (pch != NULL){
+		if (operand && (string(pch).find_first_not_of("+-/*")== string::npos) && string(pch).length() == 1) op=*pch;
+		
+		else if (operand == false && string(pch).find_first_not_of("1234567890-.")== string::npos) do_operation(total, op, stod (pch));
+		
+		else{cout << "INVALID VALUE:" << pch << endl;return 0;}
+		
+		operand = !operand;
+		pch = strtok(NULL, " ");
 	}
-	return 1;
-}
-
-
-/*********************************************************************
-** Function:input_structure_check
-** Description:checks that there are spaces in the input
-** Parameters:string input
-** Pre-Conditions:na
-** Post-Conditions:na
-*********************************************************************/ 
-
-
-int input_structure_check(string input){
-	for (int index = 0; index<(input.length() - 1); index++){
-		if ((int(input[index]) == 42 || int(input[index]) == 43 || int(input[index]) == 45 || int(input[index]) == 47) && (int(input[index+1]) != 32)){
-			cout << "ERROR - OPERATOR NOT FOLLOWED BY A SPACE! BREAKING\n\n";
-			return 0; // operator not followed by a space
-		}
-		if ((int(input[index])>=48 && int(input[index]) <=57) && (int(input[index + 1]) == 42 || int(input[index + 1]) == 43 || int(input[index + 1]) == 45 || int(input[index + 1]) == 47)) {
-			cout << "ERROR - NUMBER VALUE NOT FOLLOWED BY A SPACE! BREAKING\n\n";
-			return 0; // number not followed by a space
-		}
-	}
-	return 1;
-}
-
-
-/*********************************************************************
-** Function:eq_GetOperator
-** Description:will return the current next operator as a char, and removes that from the head of the string
-** Parameters:string &equation
-** Pre-Conditions:na
-** Post-Conditions:na
-*********************************************************************/ 
-
-
-char eq_GetOperator(string &equation){
-	char temp;
-	temp = equation[0];
-	equation.erase(0,2);
-	return temp;
-}
-
-
-/*********************************************************************
-** Function:eq_GetNumber
-** Description:Gets the next number of the equation. This also removes that from the head of the string.
-** Parameters:string &equation
-** Pre-Conditions:na
-** Post-Conditions:na
-*********************************************************************/ 	
+	if (operand) cout << "The total is: " << total << endl;
+	return int(operand); // will be false if the last character found was an operator
+	
+}	
 
 	
-int eq_GetNumber(string &equation){
-	int end_flag = 0;
-	for (int i = 0; i<equation.length(); i++){
-		if (equation[i] != ' '){
-			end_flag += 1;
-		}
-		else{
-			break;
-		}
-	}
-	string temp = equation.substr(0,end_flag);
-	equation.erase(0,end_flag+1);
-	return s_to_i(temp);
-}
-
-
-/*********************************************************************
-** Function:eq_Splitter
-** Description:gets the operator and the integers. increases the total by the appropriate number.
-** Parameters:int total, string &equation
-** Pre-Conditions:na
-** Post-Conditions:na
-*********************************************************************/ 
-
-
-int eq_Splitter(int total, string &equation){
-	char op = eq_GetOperator(equation);
-	int target = eq_GetNumber(equation);
-	if (op == '*') return (total * target);
-	if (op == '+') return (total + target);
-	if (op == '-') return (total - target);
-	if (op == '/') return (total / target);
-}
-
-
 /*********************************************************************
 ** Function:eq_Orchestrator
 ** Description:Orchestrates the equation solving operations
@@ -184,24 +104,22 @@ int eq_Splitter(int total, string &equation){
 
 
 void eq_Orchestrator (){
-	string equation;
+	string equation; int outcome;
 	cin.ignore();
 	cout << "Equation with Spaces: ";
 	getline(cin, equation);
+	if (equation == "") return;
+	outcome = evaluate(equation);
+	while (outcome != 1){
 	
-	int total = eq_GetNumber(equation);
-
-	if (input_character_check(equation) && input_structure_check(equation)){
-		int len = equation.length();
-		while (len > 2){
-			total = eq_Splitter(total, equation);
-			len = equation.length();
-		}
-		cout << "Total came to: " << total << endl;
-	}
-	else{
-		cout << "ERROR - ENTERED EQUATION IMPROPERLY FORMATTED. BREAKING";
-	}
+	cout << "Processing Failed; Equation with Spaces: ";
+	getline(cin, equation);	
+	if (equation == "") return;
+	
+	outcome = evaluate(equation);	
+		
+	}	
+	
 }
 
 
