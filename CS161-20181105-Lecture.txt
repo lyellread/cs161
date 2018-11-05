@@ -1,0 +1,23 @@
+
+# CS161 - LECTURE 15 - 11/05/2018 #
+
+Chapter: 1
+
+Defenitions
+Heap: "on the fly" memory - for saving things that the program only encounters a need to store at runtime. Dynamic Allocation
+Stack: Where declared variables will reside. Static Allocation
+Requesting an Address: syntax: int * p; p = new int; p will gather the value of a plae on the heap.
+Deleting a Variable: delete <var>;
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+
+End_Notes
+
+Files
+
+End_Files
