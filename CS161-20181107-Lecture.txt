@@ -1,0 +1,20 @@
+
+# CS161 - LECTURE 16 - 11/07/2018 #
+
+Chapter: 1
+
+Defenitions: 
+Declaring an Array: <type> <name>[<len>]
+End_Defenitions
+
+Concepts
+
+End_Concepts
+
+Notes
+Writing outside the length of an array can corrupt other memory locations. 
+End_Notes
+
+Files
+
+End_Files
