@@ -1,0 +1,21 @@
+
+# CS161 - LECTURE 17 - 11/14/2018 #
+
+Chapter: 1
+
+Defenitions: 
+
+End_Defenitions
+
+Concepts
+Comand Line Arguments: passed as "./executable args"; int main (argc, argv) where argc is the number of elements in the array, and argv is an array of cstrings.
+Defining a 2D Array on Heap: int ** array_2d; array_2d=new int*[3]; array_2d [0] = new int [2]; array_2d [1] = new int [2]; array_2d [2] = new int [2]; this creates an array of pointers, that point to multiple smaller "row" arrays. 
+End_Concepts
+
+Notes
+ 
+End_Notes
+
+Files
+
+End_Files
