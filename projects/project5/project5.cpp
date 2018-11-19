@@ -65,6 +65,7 @@ int number_Of_Digits (unsigned i){ //credit to: USER: Skizz, Tim Cooper, on http
     return i > 0 ? (int) log10 ((double) i) + 1 : 1;
 }
 
+
 // #####################
 // #INPUT CHECKING FXNS#
 // #####################
@@ -713,10 +714,15 @@ int main(int argc, char ** argv){
 
 			score_All(scoresheet, result);
 
-
+			for(int i=0; i<result; i++) {
+				delete[] scoresheet[i];
+			}
+			delete[] scoresheet;
 
 			cout << "Play Again? (1 | 0) :";
 			cin >> cont;
+
+
 		}
 	}
 	else{
