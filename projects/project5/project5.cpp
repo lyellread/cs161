@@ -1,4 +1,11 @@
-
+/*********************************************************************
+** Program Filename:project5.cpp
+** Author:Lyell C Read
+** Date:11/18/2018
+** Description:Yahtzee - a messy C++ implementation
+** Input:User input
+** Output:Text output
+*********************************************************************/
 
 #include <iostream>
 #include <stdio.h>
@@ -19,6 +26,15 @@ using namespace std;
 // #####################
 
 
+/*********************************************************************
+** Function:s_to_i
+** Description:string to int
+** Parameters:string input
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int s_to_i (string input){
 	int output=0;
 	for (int str_index=0; str_index < input.length(); str_index++){
@@ -35,6 +51,16 @@ int s_to_i (string input){
 	return output;
 }
 
+
+/*********************************************************************
+** Function:number_Of_Digits
+** Description:returns the number of digits in a number
+** Parameters:unsigned int i
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int number_Of_Digits (unsigned i){ //credit to: USER: Skizz, Tim Cooper, on https://stackoverflow.com/questions/1489830/efficient-way-to-determine-number-of-digits-in-an-integer
     return i > 0 ? (int) log10 ((double) i) + 1 : 1;
 }
@@ -44,12 +70,31 @@ int number_Of_Digits (unsigned i){ //credit to: USER: Skizz, Tim Cooper, on http
 // #####################
 
 
+/*********************************************************************
+** Function:string_Is_Int
+** Description:checks a string is integer
+** Parameters: string input
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int string_Is_Int (string input){
 	for (int i=0; i<input.length(); ++i){
 		if (input[i]>57 || input[i]<48) return 0;
 	}
 	return 1;
 }
+
+
+/*********************************************************************
+** Function:parameter_Check
+** Description: checks the parameters are cool
+** Parameters:string parameter
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int parameter_Check(string parameter){
 	if (string_Is_Int(parameter)){
@@ -60,6 +105,16 @@ int parameter_Check(string parameter){
 		exit(EXIT_FAILURE);
 	}
 }
+
+
+/*********************************************************************
+** Function:input_On_Range
+** Description:checks that input is on a range, otherwise recuseive self-calls to force good input
+** Parameters:int acceptable_min, int acceptable_max
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int input_On_Range (int acceptable_min, int acceptable_max){
 
@@ -104,6 +159,15 @@ int input_On_Range (int acceptable_min, int acceptable_max){
 // #####################
 
 
+/*********************************************************************
+** Function:sum_Of
+** Description:sum of all items of an array at arr with len len_arr
+** Parameters:int arr[], int len_arr
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int sum_Of(int arr[], int len_arr){ //[array, length]
 	int result=0;
 	for (int index=0; index< len_arr; ++index){
@@ -111,6 +175,16 @@ int sum_Of(int arr[], int len_arr){ //[array, length]
 	}
 	return result;
 }
+
+
+/*********************************************************************
+** Function:q_Of_n
+** Description:how many instances of n in array
+** Parameters:int n, int dice[], int len_dice
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int q_Of_n (int n, int dice[], int len_dice){ //[how many of n, array, length]
 	//cout << "DICE ADDR: " << dice << endl;
@@ -125,6 +199,16 @@ int q_Of_n (int n, int dice[], int len_dice){ //[how many of n, array, length]
 	//cout << "COUNTER: " << counter << endl;
 	return counter;
 }
+
+
+/*********************************************************************
+** Function:are_Equal
+** Description:checks if two arrays are equal to eachother.
+** Parameters:int arr_1[], int arr_2[], int len_1, int len_2
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int are_Equal (int arr_1[], int arr_2[], int len_1, int len_2){
 	if (len_1 != len_2)
@@ -146,6 +230,15 @@ int are_Equal (int arr_1[], int arr_2[], int len_1, int len_2){
 // #####################
 
 
+/*********************************************************************
+** Function:numbers_Only
+** Description:can compute the score for the categories n on 1..6
+** Parameters:int number, int dice[], int len_dice
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int numbers_Only (int number, int dice[], int len_dice){
 	int counter=0;
 	for (int i=0; i<len_dice; ++i){
@@ -155,6 +248,16 @@ int numbers_Only (int number, int dice[], int len_dice){
 	}
 	return counter;
 }
+
+
+/*********************************************************************
+** Function:n_Of_A_Kind
+** Description:checks for (3|4) of a kind; returns score
+** Parameters:int n, int dice[], int len_dice
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int n_Of_A_Kind (int n, int dice[], int len_dice){ //[(3|4) of a kind, array, length]
 	//cout << "DICE ADDR: " << dice << endl;
@@ -166,6 +269,16 @@ int n_Of_A_Kind (int n, int dice[], int len_dice){ //[(3|4) of a kind, array, le
 	return 0;
 }
 
+
+/*********************************************************************
+** Function:full_House
+** Description:checks for full house, returns the score
+** Parameters:int dice[], int len_dice, int deltas[]
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int full_House (int dice[], int len_dice, int deltas[]){
 
 	if ((deltas[0] == 0 && deltas[3] == 0) && (deltas[1] == 0 || deltas[2] == 0)){
@@ -173,6 +286,16 @@ int full_House (int dice[], int len_dice, int deltas[]){
 	}
 	return 0;
 }
+
+
+/*********************************************************************
+** Function:small_Straight
+** Description:checks for small straight, and returns appropriate score
+** Parameters:int dice[], int len_dice, int deltas[], int large_Straight_Deltas[], int len_Large_Straight_Deltas
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int small_Straight (int dice[], int len_dice, int deltas[], int large_Straight_Deltas[], int len_Large_Straight_Deltas){
 	/*
@@ -188,12 +311,32 @@ int small_Straight (int dice[], int len_dice, int deltas[], int large_Straight_D
 	return 0;
 }
 
+
+/*********************************************************************
+** Function:large_Straight
+** Description:checks for large straight, and returns appropriate score
+** Parameters:int deltas[], int len_deltas, int large_Straight_Deltas[], int len_Large_Straight_Deltas
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int large_Straight (int deltas[], int len_deltas, int large_Straight_Deltas[], int len_Large_Straight_Deltas){
 	if (are_Equal(large_Straight_Deltas, deltas, len_Large_Straight_Deltas, len_deltas)){
 		return 40;
 	}
 	return 0;
 }
+
+
+/*********************************************************************
+** Function:yahtzee
+** Description:checks and returns appropriate score for yahtzee
+** Parameters:int deltas[], int len_deltas, int yahtzee_Deltas[], int len_Yahtzee_Deltas
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int yahtzee (int deltas[], int len_deltas, int yahtzee_Deltas[], int len_Yahtzee_Deltas){
 	if (are_Equal(yahtzee_Deltas, deltas, len_Yahtzee_Deltas, len_deltas)){
@@ -206,6 +349,15 @@ int yahtzee (int deltas[], int len_deltas, int yahtzee_Deltas[], int len_Yahtzee
 // #####################
 // #GAMEPLAY  FUNCTIONS#
 // #####################
+
+
+/*********************************************************************
+** Function:randomize_Dice
+** Description:randomizes the appropriate dice
+** Parameters:int dice[], int deltas[], int roll[]
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 
 void randomize_Dice (int dice[], int deltas[], int roll[]){
@@ -235,6 +387,16 @@ void randomize_Dice (int dice[], int deltas[], int roll[]){
 		}
 		*/
 }
+
+
+/*********************************************************************
+** Function:score_By_Play
+** Description:score a play, and return the score
+** Parameters:int play, int dice[], int deltas[], int large_Straight_Deltas[], int yahtzee_Deltas[]
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 int score_By_Play(int play, int dice[], int deltas[], int large_Straight_Deltas[], int yahtzee_Deltas[]){
 
@@ -268,6 +430,16 @@ int score_By_Play(int play, int dice[], int deltas[], int large_Straight_Deltas[
 		return sum_Of(dice, 5);
 	}
 }
+
+
+/*********************************************************************
+** Function:print_Score
+** Description:prints the score table. (more complex than it looks)
+** Parameters:int dice[], int ** scoresheet,int score_Flag, int player, int deltas[], int large_Straight_Deltas[], int yahtzee_Deltas[]
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 void print_Score (int dice[], int ** scoresheet,int score_Flag, int player, int deltas[], int large_Straight_Deltas[], int yahtzee_Deltas[]){ //provide a scoresheet of length 13 with all '-1' to return a full theoretical dice roll
 
@@ -331,6 +503,16 @@ void print_Score (int dice[], int ** scoresheet,int score_Flag, int player, int 
 
 }
 
+
+/*********************************************************************
+** Function:roll_Dice
+** Description:manages rolling the dice sequence
+** Parameters:int dice[], int deltas[], int large_Straight_Deltas[], int yahtzee_Deltas[], int ** scoresheet, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 void roll_Dice (int dice[], int deltas[], int large_Straight_Deltas[], int yahtzee_Deltas[], int ** scoresheet, int player){
 
 	int roll_Binary[5] = {1,1,1,1,1};
@@ -374,6 +556,16 @@ void roll_Dice (int dice[], int deltas[], int large_Straight_Deltas[], int yahtz
 
 }
 
+
+/*********************************************************************
+** Function:play_Dice
+** Description:play the dice in the play; save in scoreboard
+** Parameters:int dice[], int deltas[], int ** scoresheet, int player, int large_Straight_Deltas[], int yahtzee_Deltas[]
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 void play_Dice(int dice[], int deltas[], int ** scoresheet, int player, int large_Straight_Deltas[], int yahtzee_Deltas[]){
 	char options[13][30] = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "3 Of A Kind", "4 Of A Kind", "Full House", "Sm. Straight","Lg. Straignt","Yahtzee", "Chance"};
 
@@ -393,6 +585,16 @@ void play_Dice(int dice[], int deltas[], int ** scoresheet, int player, int larg
 
 }
 
+
+/*********************************************************************
+** Function:score_Player
+** Description: score for a player
+** Parameters:int ** scoresheet, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+
 int score_Player (int ** scoresheet, int player){
 	int top_Sum=0;
 	int bot_Sum=0;
@@ -406,6 +608,16 @@ int score_Player (int ** scoresheet, int player){
 
 	return (top_Sum+bot_Sum);
 }
+
+
+/*********************************************************************
+** Function:score_All
+** Description:score for all players
+** Parameters:int ** scoresheet, int n
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 
 void score_All (int ** scoresheet, int n){
 	cout << "\n\n";
@@ -428,6 +640,15 @@ void score_All (int ** scoresheet, int n){
 // #####################
 // #  MAIN   FUNCTION  #
 // #####################
+
+
+/*********************************************************************
+** Function:main
+** Description: main function lol - controls the whole program neatly.
+** Parameters:int argc, char ** argv
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 
 int main(int argc, char ** argv){
