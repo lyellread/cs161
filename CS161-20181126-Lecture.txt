@@ -1,0 +1,22 @@
+
+# CS161 - LECTURE 1 ++ n - 11/14/2018 #
+
+Chapter: 1
+
+Defenitions: 
+Structure: "struct", data structure containing multiple data types. Defined as struct <name> { //Variables defined per line// }; ; declared outside struct with <struct_name> <new_name>
+End_Defenitions
+
+Concepts
+Using Structs: <struct_name> <new_name>; <new_name>.element = value; //repeat... 
+Arrays and Structs: <struct_name> <array>[len]; for element of array, assign whatever struct elements are needed at that index of the array.
+Pointers to Structs: <struct> <name1>; <struct>* <ptr_name> = &(name1); EITHER (*<ptr_name>).element=value OR <ptr_name>->element = value;
+End_Concepts
+
+Notes
+ 
+End_Notes
+
+Files
+
+End_Files
