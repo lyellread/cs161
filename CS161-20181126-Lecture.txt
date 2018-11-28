@@ -1,5 +1,5 @@
 
-# CS161 - LECTURE 1 ++ n - 11/14/2018 #
+# CS161 - LECTURE 1&n - 11/14/2018 #
 
 Chapter: 1
 
@@ -14,7 +14,8 @@ Pointers to Structs: <struct> <name1>; <struct>* <ptr_name> = &(name1); EITHER (
 End_Concepts
 
 Notes
- 
+Code to Make a 2D Array of Structs: Must be done dynamically, could also be done by passing triple pointer to fxn: struct_name ** create_Array (int rows, int cols){struct_name ** array_name = new struct_name * [rows];  for (int i=0; i<rows; ++i){array_name[i] = new struct_name[cols];} return array_name; }
+Using a 2D Array of structs: struct_name ** pointer_name = create_Array(a,b); pointer_name[c][d].struct_value = value;
 End_Notes
 
 Files
