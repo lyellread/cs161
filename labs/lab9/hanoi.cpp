@@ -3,10 +3,10 @@
 using namespace std;
 
 void initialize(int towers[][3], int n){
-   
+
    for(int i = 0; i < n; i++){
       for(int j = 0; j < 3; j++){
-	 towers[i][j] = 0; 
+	 towers[i][j] = 0;
       }
    }
 
@@ -37,7 +37,7 @@ void move_disk(int towers[][3], int n, int from_col, int to_col){
 	 towers[i][from_col] = 0;
 	 //cout << "temp: " << temp << endl;
 	 for(int j = 0; j < n; j++){
-            if(towers[j][to_col] != 0){
+      if(towers[j][to_col] != 0){
 	       towers[j-1][to_col] = temp;
 	       print_array(towers, n);
 	       return;
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
    n = int(argv[1][0])-48;
 
    cout << "N is: " << n << endl;
-   
+
    int towers [n][3];
 
    initialize(towers, n);
