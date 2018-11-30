@@ -1,0 +1,10 @@
+## PROGRAM 6 README - LYELL READ ##
+
+Note 1 : If compilation does not work at first, try with GCC 7.3.0 on amd46 platform.
+Note 2 : No additional code was added to make the computer play better.
+Note 3 : There *are* colors - make sure your shell allows them 'cause they're sweet!
+Note 4 : About function length: I could make this whole program a one-liner (int abc = 6;\nbool open; --> int abc = 6; bool open;) but that's not nice for anyone. Therefore, I expanded *purposefully* some functions for added readability. Again, I know how to make all these functions meet the 20-line-soft-requirement but they are thicc so that they can be easily read. Thanks for reading this far... I hope the grading of however-many-hundred of these is not *that* monotonous ;). Also, because main() is long, here it is as a *beeaauuttiiffuull* oneliner:
+
+int main (int argc, char ** argv) {if (argc != 4){cout << "BREAKING GRACEFULLY ~ INPUT PROVIDED IS OF INCORRECT LENGTH" << endl;exit(EXIT_FAILURE);}connect4_game c4;srand(time(NULL));c4.players = parameter_Check (argv[1], 1, 2);c4.rows = parameter_Check (argv[2],4,100);c4.cols = parameter_Check (argv[3],4,100);c4.grid_ptr = make_Array(c4.rows, c4.cols);int continue_Game = 1;int game_Won = -1;while (continue_Game){blank_Array (c4.grid_ptr, c4.rows,c4.cols, 0);for (int play = 0; play < (c4.rows * c4.cols); ++play){if ((play % 2) == 0){player_Turn(c4, 1);game_Won = check_All (c4, 1);}if ((play %2) != 0 && c4.players == 1){computer_Play(c4);game_Won = check_All (c4, 2);}if ((play %2) != 0 && c4.players == 2){player_Turn(c4, 2);game_Won = check_All (c4, 2);}if (game_Won != -1){cout << "\n";draw_Grid (c4);cout << "\n\n \033[0;32mPLAYER: " << game_Won << " WON!\033[0m" << endl;break;}}if (game_Won == -1){cout << "\033[0;32m\n CAT GAME!!\033[0m" << endl;}cout << "\n Play Again? (1 or 0) :";continue_Game = input_On_Range (0,1);}delete_Array(c4.grid_ptr, c4.rows, c4.cols);}
+
+And the purpose is all basically categorized as "management" for that whole function, so modularizing it further adds inefficiency, and is stupid imo. 

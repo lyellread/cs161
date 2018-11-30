@@ -1,4 +1,11 @@
-//Project SIX - connect4 //
+/*********************************************************************
+** Program Filename:project6.cpp
+** Author:Lyell C Read
+** Date:11/29/2018
+** Description:Connect 4 - A c++ Implementation
+** Input:User input
+** Output:Text output
+*********************************************************************/
 
 #include <iostream>
 #include <stdio.h>
@@ -12,6 +19,13 @@
 
 using namespace std;
 
+/*********************************************************************
+** Structure:connect4_game
+** Description:includes all the necessary values to make a sudoky grid
+** Values: players, rows, cols, pointer to grid.
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 struct connect4_game {
   int players;
@@ -20,15 +34,14 @@ struct connect4_game {
   int ** grid_ptr;
 };
 
-
 // #####################
 // #HOMEMADE THINGS    #
 // #####################
 
 /*********************************************************************
-** Function:s_to_i
-** Description:string to int
-** Parameters:string input
+** Function:rand_Int_On_Range
+** Description:rand integer on a range
+** Parameters:int min, int max
 ** Pre-Conditions: na
 ** Post-Conditions: na
 *********************************************************************/
@@ -39,6 +52,14 @@ int rand_Int_On_Range (int min, int max){
 
 	return (rand()%n)+min;
 }
+
+/*********************************************************************
+** Function:s_to_i
+** Description:string to int
+** Parameters:string input
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 int s_to_i (string input){
 	int output=0;
@@ -143,6 +164,14 @@ int input_On_Range (int acceptable_min, int acceptable_max){
 // #WIN-CHECK FUNCTIONS#
 // #####################
 
+/*********************************************************************
+** Function:check_Vertical
+** Description:checks for a vertical win condition in all possible places
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 int check_Vertical (connect4_game c4, int player){
   //range will be on all rows, from 0..col_max-3, checking from the top
   //cout << "VERT_CHECK REACHED";
@@ -158,6 +187,14 @@ int check_Vertical (connect4_game c4, int player){
 
   return 0;
 }
+
+/*********************************************************************
+** Function:check_Horizontal
+** Description:checks for a horizontal win condition in all possible places
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 int check_Horizontal (connect4_game c4, int player){
   //range will be on rows from 0..row_max-3, all columns,  checking from the left
@@ -175,6 +212,14 @@ int check_Horizontal (connect4_game c4, int player){
   return 0;
 }
 
+/*********************************************************************
+** Function:check_Diagonal_Up
+** Description:checks for a diagonal up-sloping win condition in all possible places
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 int check_Diagonal_Up (connect4_game c4, int player){
   //range will be on rows 0..row_max-3 and cols from 3..col_max, starting bottom left
   //cout << "DIAG_UP_CHECK REACHED";
@@ -190,6 +235,14 @@ int check_Diagonal_Up (connect4_game c4, int player){
 
   return 0;
 }
+
+/*********************************************************************
+** Function:check_Diagonal_Down
+** Description:checks for a diagonal, downward sloping win condition in all possible places
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 int check_Diagonal_Down (connect4_game c4, int player){
   //range will be on rows 0..row_max-3, cols 0..col_max-3, top left
@@ -207,6 +260,14 @@ int check_Diagonal_Down (connect4_game c4, int player){
   return 0;
 }
 
+/*********************************************************************
+** Function:check_All
+** Description:checks the four (vertical, horizontal, diagonal(up|down) win case-checking functions)
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 int check_All (connect4_game c4, int player){
   int sum = 0;
   sum += check_Vertical(c4, player);
@@ -223,6 +284,14 @@ int check_All (connect4_game c4, int player){
 // #OTHER C4 FUNCTIONS #
 // #####################
 
+/*********************************************************************
+** Function:color_Printout
+** Description:prints out the numbers 0 in white, 1 in yellow, 2 in red
+** Parameters:value
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 void color_Printout (int value){
   switch (value){
     case 0:
@@ -236,6 +305,14 @@ void color_Printout (int value){
       break;
   }
 }
+
+/*********************************************************************
+** Function:line_Printout
+** Description:prints out specific character strings based on a flag.
+** Parameters:int length, int flag
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 void line_Printout (int length, int flag) {//length ~= cols; flag is pipedash (0) or dash (1)
   cout << "  ";
@@ -253,6 +330,14 @@ void line_Printout (int length, int flag) {//length ~= cols; flag is pipedash (0
   }
   cout << "-\n";
 }
+
+/*********************************************************************
+** Function:draw_Grid
+** Description:prints out that noice looking grid.
+** Parameters:connect4_game c4
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 void draw_Grid (connect4_game c4){
   line_Printout(c4.cols, 1);
@@ -282,6 +367,14 @@ void draw_Grid (connect4_game c4){
   cout << "\033[0m";
 }
 
+/*********************************************************************
+** Function:column_Playable
+** Description:bool if top element is full or not
+** Parameters:connect4_game c4, int play_Column
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 int column_Playable (connect4_game c4, int play_Column){
 
   //cout << "CHECKING IF " << c4.grid_ptr[0][play_Column-1] << " IS APPTR";
@@ -291,13 +384,26 @@ int column_Playable (connect4_game c4, int play_Column){
   return 0;
 }
 
+/*********************************************************************
+** Function:play_Value
+** Description:play a value in a column, dropping it to the bottom, or the lowest open spot otherwise
+** Parameters:connect4_game c4, int play_Column, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 void play_Value (connect4_game c4, int play_Column, int player){
   //player is 1..2
   //we want to drop to bottom...
 
+  //cout << "VAL_PLAY ; COL : " << play_Column << endl;
+
   for (int elev = 0; elev < c4.rows; ++elev){
     if (c4.grid_ptr[elev][play_Column-1] != 0){
       c4.grid_ptr[elev-1][play_Column-1] = player;
+
+      //cout << "PLAYING " << player << " AT " << elev-1 << ", " << play_Column-1 << endl;
+
       return;
     }
   }
@@ -305,6 +411,14 @@ void play_Value (connect4_game c4, int play_Column, int player){
   c4.grid_ptr[c4.rows-1][play_Column-1] = player;
   return;
 }
+
+/*********************************************************************
+** Function:play_Input_And_Check
+** Description:takes user input, and plays that value, or returns an error and recursivley self calls
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 void play_Input_And_Check (connect4_game c4, int player){
   int play_Column;
@@ -318,6 +432,14 @@ void play_Input_And_Check (connect4_game c4, int player){
     play_Input_And_Check(c4, player);
   }
 }
+
+/*********************************************************************
+** Function:player_Turn
+** Description:manages the turn of a player
+** Parameters:connect4_game c4, int player
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 void player_Turn (connect4_game c4, int player){
   cout << "\n\n\n ~IT IS PLAYER ";
@@ -338,17 +460,33 @@ void player_Turn (connect4_game c4, int player){
 // #  COMPUTER  "AI"   #
 // #####################
 
+/*********************************************************************
+** Function:computer_Play
+** Description:plays for the CPU. RANDOM right now, in this iteration
+** Parameters:connect4_game c4
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 void computer_Play (connect4_game c4){
   int play_Column = rand_Int_On_Range (0,c4.cols-1); //if 4 cols, want on 0..3 for indexing
-  while (!column_Playable(c4, play_Column)){
+  while (!column_Playable(c4, play_Column+1)){
     play_Column = rand_Int_On_Range (0,c4.cols-1); //if 4 cols, want on 0..3 for indexing
   }
-  play_Value(c4, play_Column+1, 2);
+  play_Value(c4, (play_Column+1), 2);
 }
 
 // #####################
-// #   MAIN  FUNCTION  #
+// #ARRAY MANIPULATION #
 // #####################
+
+/*********************************************************************
+** Function:int ** make_Array
+** Description:makes an array and assigns it that pointer that it returns
+** Parameters:rows, cols
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 int ** make_Array (int rows, int cols){
   int ** grid;
@@ -359,6 +497,30 @@ int ** make_Array (int rows, int cols){
   return grid;
 }
 
+/*********************************************************************
+** Function:delete_Array
+** Description:makes an array and assigns it that pointer that it returns
+** Parameters:pointer-to-array, rows, cols
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
+void delete_Array (int ** array_pointer, int rows, int cols){
+  cout << "Cleaning up..." << endl;
+  for(int i=0; i<rows; i++) {
+    delete[] array_pointer[i];
+  }
+  delete[] array_pointer;
+}
+
+/*********************************************************************
+** Function: blank_Array
+** Description:blanks an array to a specific value
+** Parameters:int ** array_Ptr, int rows, int cols, int blank_To_Value
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
+
 void blank_Array (int ** array_Ptr, int rows, int cols, int blank_To_Value){
   for (int row=0; row < rows; ++row){
     for (int col=0; col < cols; ++col){
@@ -366,6 +528,18 @@ void blank_Array (int ** array_Ptr, int rows, int cols, int blank_To_Value){
     }
   }
 }
+
+// #####################
+// #   MAIN  FUNCTION  #
+// #####################
+
+/*********************************************************************
+** Function:main
+** Description:commands this siiiick operation - calls turns and calls win-checking, and prints result messages, and manages looping
+** Parameters:int argc, char ** argv
+** Pre-Conditions: na
+** Post-Conditions: na
+*********************************************************************/
 
 int main (int argc, char ** argv) {
   if (argc != 4){
@@ -420,11 +594,16 @@ int main (int argc, char ** argv) {
     }
 
     if (game_Won == -1){
-      cout << "\033[0;32m\n CAT GAME!!\033[0m" << endl;
+      cout << "\n";
+      draw_Grid (c4);
+      cout << "\n\n\033[0;32m\n CAT GAME!!\033[0m" << endl;
     }
 
     cout << "\n Play Again? (1 or 0) :";
     continue_Game = input_On_Range (0,1);
 
   }
+
+  delete_Array(c4.grid_ptr, c4.rows, c4.cols);
+
 }
