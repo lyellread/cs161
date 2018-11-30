@@ -1,5 +1,5 @@
 /*********************************************************************
-** Program Filename:project6.cpp
+** Program Filename:program6.cpp
 ** Author:Lyell C Read
 ** Date:11/29/2018
 ** Description:Connect 4 - A c++ Implementation

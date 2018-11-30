@@ -1,5 +1,5 @@
 /*********************************************************************
-** Program Filename:project3.cpp
+** Program Filename:program3.cpp
 ** Author:Lyell C Read
 ** Date:10/17/2018
 ** Description:An Algebra Game Yay

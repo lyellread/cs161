@@ -1,6 +1,6 @@
 
 /*********************************************************************
-** Program Filename:project4.cpp
+** Program Filename:program4.cpp
 ** Author:Lyell C Read
 ** Date:10/23/2018
 ** Description:A medley of a program. Can convert bin to dec. Can calculate weighted averages. Can evaluate equations as well.

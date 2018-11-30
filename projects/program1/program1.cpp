@@ -1,5 +1,5 @@
 /*********************************************************************
-** Program Filename: project1.cpp
+** Program Filename: program1.cpp
 ** Author: Lyell Read
 ** Date: 09-29-2018
 ** Description: Working with max and min sizes for n- byte binary numbers

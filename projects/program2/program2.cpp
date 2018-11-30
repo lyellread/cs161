@@ -1,7 +1,7 @@
 
 
 /*********************************************************************
-** Program Filename:project2.cpp
+** Program Filename:program2.cpp
 ** Author:Lyell C Read
 ** Date:10/06/2018
 ** Description:Text Adventure Game

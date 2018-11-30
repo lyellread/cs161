@@ -1,5 +1,5 @@
 /*********************************************************************
-** Program Filename:project5.cpp
+** Program Filename:program5.cpp
 ** Author:Lyell C Read
 ** Date:11/18/2018
 ** Description:Yahtzee - a messy C++ implementation
