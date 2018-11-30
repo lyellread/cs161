@@ -12,8 +12,17 @@
 
 using namespace std;
 
+
+struct connect4_game {
+  int players;
+  int rows;
+  int cols;
+  int ** grid_ptr;
+};
+
+
 // #####################
-// #HOMEMADE CONVERTERS#
+// #HOMEMADE THINGS    #
 // #####################
 
 /*********************************************************************
@@ -23,6 +32,13 @@ using namespace std;
 ** Pre-Conditions: na
 ** Post-Conditions: na
 *********************************************************************/
+
+int rand_Int_On_Range (int min, int max){
+
+	int n = (max-min)+1;
+
+	return (rand()%n)+min;
+}
 
 int s_to_i (string input){
 	int output=0;
@@ -127,28 +143,76 @@ int input_On_Range (int acceptable_min, int acceptable_max){
 // #WIN-CHECK FUNCTIONS#
 // #####################
 
-int check_Vertical (int ** grid, int rows, int cols, int player){
+int check_Vertical (connect4_game c4, int player){
   //range will be on all rows, from 0..col_max-3, checking from the top
+  //cout << "VERT_CHECK REACHED";
+  for (int row = 0; row < c4.rows-3; ++row){
+    for (int col = 0; col < c4.cols; ++col){
+      //cout << "[" << row << "," <<  col << "] ";
+      if (c4.grid_ptr[row][col] == player && c4.grid_ptr[row+1][col] == player && c4.grid_ptr[row+2][col] == player && c4.grid_ptr[row+3][col] == player){
+        //cout << "FOUND VERTICAL WIN @ " << row << ", " << col << endl;
+        return 1;
+      }
+    }
+  }
+
+  return 0;
 }
 
-int check_Horizontal (int ** grid, int rows, int cols, int player){
+int check_Horizontal (connect4_game c4, int player){
   //range will be on rows from 0..row_max-3, all columns,  checking from the left
+  //cout << "HRZT_CHECK REACHED";
+  for (int row = 0; row < c4.rows; ++row){
+    for (int col = 0; col < c4.cols-3; ++col){
+      //cout << "[" << row << "," <<  col << "] ";
+      if (c4.grid_ptr[row][col] == player && c4.grid_ptr[row][col+1] == player && c4.grid_ptr[row][col+2] == player && c4.grid_ptr[row][col+3] == player){
+        //cout << "FOUND HORIZONTAL WIN @ " << row << ", " << col << endl;
+        return 1;
+      }
+    }
+  }
+
+  return 0;
 }
 
-int check_Diagonal_Up (int ** grid, int rows, int cols, int player){
+int check_Diagonal_Up (connect4_game c4, int player){
   //range will be on rows 0..row_max-3 and cols from 3..col_max, starting bottom left
+  //cout << "DIAG_UP_CHECK REACHED";
+  for (int row = 3; row < c4.rows; ++row){
+    for (int col = 0; col < c4.cols-3; ++col){
+      //cout << "[" << row << "," <<  col << "] ";
+      if (c4.grid_ptr[row][col] == player && c4.grid_ptr[row-1][col+1] == player && c4.grid_ptr[row-2][col+2] == player && c4.grid_ptr[row-3][col+3] == player){
+        //cout << "FOUND DIAGONAL_UP WIN @ " << row << ", " << col << endl;
+        return 1;
+      }
+    }
+  }
+
+  return 0;
 }
 
-int check_Diagonal_Down (int ** grid, int rows, int cols, int player){
+int check_Diagonal_Down (connect4_game c4, int player){
   //range will be on rows 0..row_max-3, cols 0..col_max-3, top left
+  //cout << "DIAG_DW_CHECK REACHED";
+  for (int row = 0; row < c4.rows-3; ++row){
+    for (int col = 0; col < c4.cols-3; ++col){
+      //cout << "[" << row << "," <<  col << "] ";
+      if (c4.grid_ptr[row][col] == player && c4.grid_ptr[row+1][col+1] == player && c4.grid_ptr[row+2][col+2] == player && c4.grid_ptr[row+3][col+3] == player){
+        //cout << "FOUND DIAGONAL_DOWN WIN @ " << row << ", " << col << endl;
+        return 1;
+      }
+    }
+  }
+
+  return 0;
 }
 
-int check_All (int ** grid, int rows, int cols, int player){
+int check_All (connect4_game c4, int player){
   int sum = 0;
-  sum += check_Vertical(grid, rows, cols, player);
-  sum += check_Horizontal(grid, rows, cols, player);
-  sum += check_Diagonal_Up(grid, rows, cols, player);
-  sum += check_Diagonal_Down(grid, rows, cols, player);
+  sum += check_Vertical(c4, player);
+  sum += check_Horizontal(c4, player);
+  sum += check_Diagonal_Up(c4, player);
+  sum += check_Diagonal_Down(c4, player);
   if (sum >= 1) {
   return player;
   }
@@ -159,32 +223,114 @@ int check_All (int ** grid, int rows, int cols, int player){
 // #OTHER C4 FUNCTIONS #
 // #####################
 
-void draw_Grid (int ** grid, int rows, int cols){
-
+void color_Printout (int value){
+  switch (value){
+    case 0:
+      cout << value;
+      break;
+    case 1:
+      cout << "\033[1;33m" << value << "\033[0m";
+      break;
+    case 2:
+      cout << "\033[1;31m" << value << "\033[0m";
+      break;
+  }
 }
 
-int play_OK (int ** grid, int rows, int cols, int play_Column){
-
-
+void line_Printout (int length, int flag) {//length ~= cols; flag is pipedash (0) or dash (1)
+  cout << "  ";
+  if (flag){
+    for (int i=0; i<length; ++i){
+      cout << "---";
+    }
+    cout << "-";
+  }
+  else{
+    cout << "-";
+    for (int i=0; i<length; ++i){
+      cout << "-|-";
+    }
+  }
+  cout << "-\n";
 }
 
-void play_Value (int ** grid, int rows, int cols, int play_Column, int player){
+void draw_Grid (connect4_game c4){
+  line_Printout(c4.cols, 1);
+  for (int row=0; row < c4.rows; ++row){
+    cout <<"  | ";
+    for (int col=0; col < c4.cols; ++col){
+      color_Printout(c4.grid_ptr[row][col]);
+      if (col != c4.cols-1){
+        cout << "  ";
+      }
+    }
+    cout << " |\n";
+    //line_Printout(c4.cols, 1);
+    }
+
+  line_Printout(c4.cols, 0); //---|--|--...
+
+  cout << "    \033[1;36m";
+  for (int col=0; col < c4.cols; ++col){
+    if (col>8){
+      cout << (col +1)<< " ";
+    }
+    else{
+      cout << (col +1)<< "  ";
+    }
+  }
+  cout << "\033[0m";
+}
+
+int column_Playable (connect4_game c4, int play_Column){
+
+  //cout << "CHECKING IF " << c4.grid_ptr[0][play_Column-1] << " IS APPTR";
+  if (c4.grid_ptr[0][play_Column-1] == 0){
+    return 1;
+  }
+  return 0;
+}
+
+void play_Value (connect4_game c4, int play_Column, int player){
   //player is 1..2
   //we want to drop to bottom...
 
-  for (int elev = 0; elev < cols; ++elev){
-    if (grid[elev][play_Column] != 0){
-      grid[elev-1][play_Column] = player;
+  for (int elev = 0; elev < c4.rows; ++elev){
+    if (c4.grid_ptr[elev][play_Column-1] != 0){
+      c4.grid_ptr[elev-1][play_Column-1] = player;
       return;
     }
   }
-
   //the col is empty
-  grid[rows-1][play_Column] = player;
+  c4.grid_ptr[c4.rows-1][play_Column-1] = player;
   return;
 }
 
-void player_Turn (int ** grid, int rows, int cols, int player){
+void play_Input_And_Check (connect4_game c4, int player){
+  int play_Column;
+  cout << "\n\n What column? :";
+  play_Column = input_On_Range (1,c4.cols);
+  if (column_Playable(c4, play_Column) == 1){ //top element is emptyyyyy
+    play_Value(c4, play_Column, player);
+  }
+  else{
+    cout << "BAD INPUT: AGAIN: ";
+    play_Input_And_Check(c4, player);
+  }
+}
+
+void player_Turn (connect4_game c4, int player){
+  cout << "\n\n\n ~IT IS PLAYER ";
+  color_Printout(player);
+  cout << "'S TURN~\n\n";
+
+  //display array currently
+
+  draw_Grid (c4);
+
+  //make a play
+
+  play_Input_And_Check(c4, player);
 
 }
 
@@ -192,15 +338,34 @@ void player_Turn (int ** grid, int rows, int cols, int player){
 // #  COMPUTER  "AI"   #
 // #####################
 
-def computer_Play (int ** grid, int rows, int cols){
-
+void computer_Play (connect4_game c4){
+  int play_Column = rand_Int_On_Range (0,c4.cols-1); //if 4 cols, want on 0..3 for indexing
+  while (!column_Playable(c4, play_Column)){
+    play_Column = rand_Int_On_Range (0,c4.cols-1); //if 4 cols, want on 0..3 for indexing
+  }
+  play_Value(c4, play_Column+1, 2);
 }
-
 
 // #####################
 // #   MAIN  FUNCTION  #
 // #####################
 
+int ** make_Array (int rows, int cols){
+  int ** grid;
+  grid = new int* [rows];
+  for(int i=0; i<rows; i++) {
+    grid[i] = new int[cols];
+  }
+  return grid;
+}
+
+void blank_Array (int ** array_Ptr, int rows, int cols, int blank_To_Value){
+  for (int row=0; row < rows; ++row){
+    for (int col=0; col < cols; ++col){
+      array_Ptr[row][col] = blank_To_Value;
+    }
+  }
+}
 
 int main (int argc, char ** argv) {
   if (argc != 4){
@@ -208,61 +373,57 @@ int main (int argc, char ** argv) {
   	exit(EXIT_FAILURE);
   }
 
-  int number_Of_Players = parameter_Check (argv[1], 1, 2);
-  int number_Of_Rows = parameter_Check (argv[2],4,100);
-  int number_Of_Columns = parameter_Check (argv[3],4,100);
+  connect4_game c4;
+  srand(time(NULL));
+
+  c4.players = parameter_Check (argv[1], 1, 2);
+  c4.rows = parameter_Check (argv[2],4,100);
+  c4.cols = parameter_Check (argv[3],4,100);
+  c4.grid_ptr = make_Array(c4.rows, c4.cols);
+
   int continue_Game = 1;
   int game_Won = -1;
-
-  //Define Dynamically Allocated 2D Array
-  int ** grid;
-  grid = new int* [number_Of_Rows];
-  for(int i=0; i<number_Of_Rows; i++) {
-    grid[i] = new int[number_Of_Columns];
-  }
 
   while (continue_Game){
 
     //'blank' out scoresheet to 0's
-    for (int row=0; row < number_Of_Rows; ++row){
-      for (int col=0; col<number_Of_Columns; ++col){
-        grid[row][col] = 0;
-      }
-    }
+    blank_Array (c4.grid_ptr, c4.rows, c4.cols, 0);
 
-    for (int play=0; play < (number_Of_Rows * number_Of_Columns)){
+    for (int play = 0; play < (c4.rows * c4.cols); ++play){
 
       if ((play % 2) == 0){
         //even player turn = player 1's turn
-        player_Turn(grid, number_Of_Rows, number_Of_Columns, 1);
-        game_Won = check_All (grid, number_Of_Rows, number_Of_Columns, 1);
+        player_Turn(c4, 1);
+        game_Won = check_All (c4, 1);
       }
 
-      if ((play %2) != 0 && players == 1){
+      if ((play %2) != 0 && c4.players == 1){
         //odd player turn = player 2, but 1 player game, so computer_Play
-        computer_Play(grid, number_Of_Rows, number_Of_Columns);
-        game_Won = check_All (grid, number_Of_Rows, number_Of_Columns, 2);
+        computer_Play(c4);
+        game_Won = check_All (c4, 2);
       }
 
-      if ((play %2) != 0 && players == 2){
+      if ((play %2) != 0 && c4.players == 2){
         //odd player turn = player 2 turn
-        player_Turn(grid, number_Of_Rows, number_Of_Columns, 2);
-        game_Won = check_All (grid, number_Of_Rows, number_Of_Columns, 2);
+        player_Turn(c4, 2);
+        game_Won = check_All (c4, 2);
       }
 
       //the appropriate turn has been executed. Check and announce win
       if (game_Won != -1){
-        cout << "PLAYER: " << game_Won << " WON!" << endl;
+        cout << "\n";
+        draw_Grid (c4);
+        cout << "\n\n \033[0;32mPLAYER: " << game_Won << " WON!\033[0m" << endl;
         break;
       }
 
     }
 
     if (game_Won == -1){
-      cout << "CAT GAME!!" << endl;
+      cout << "\033[0;32m\n CAT GAME!!\033[0m" << endl;
     }
 
-    cout << "\nPlay Again? (1 or 0) :";
+    cout << "\n Play Again? (1 or 0) :";
     continue_Game = input_On_Range (0,1);
 
   }
