@@ -1,0 +1,1 @@
+All content herein was written by Justin Goins. The proficiency questions are just two of the many given out but not published.
