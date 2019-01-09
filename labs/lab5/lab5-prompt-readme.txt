@@ -1,1 +1,0 @@
-All content in this directory except lab5.cpp was authored by Justin Goins. I claim ownership exclusively of lab5.cpp.

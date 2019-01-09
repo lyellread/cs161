@@ -1,1 +1,0 @@
-This prompt was authored by Justin Goins. I claim no authorship. 
