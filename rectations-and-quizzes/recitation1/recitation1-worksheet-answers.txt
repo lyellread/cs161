@@ -1,0 +1,62 @@
+# CS161 - LAB1 - 09/27/2018 #
+
+Questions:
+
+1. Explain the terms Algorithm, Programming, Signed, Unsigned, Variable
+
+ - Algorithm: logical way to solve a problem. Steps to get to a solution
+ - Programming: Using computers to solve problems
+ - Signed: Includes signing method (can be neg and pos)
+ - Unsigned: Can only be 0, >0
+
+2. Convert 51BASE10 to BASE2
+
+51BASE10 = 0*2^6 + 1*2^5 + 1*2^4 + 0*2^3 + 0*2^2 + 1*2^1 + 1*2^0 = 110011BASE2 
+
+3. Convert unsigned binary 10110011BASE2 to BASE10
+
+1*2^7 + 1*2^5 + 1*2^4 + 1*2^1 + 1*2^0 = 179BASE10
+
+4. Convert signed binary 10110011BASE2 to BASE10
+
+Using Sign Bit: Sign bit (bit 0, first bit, =1=negative) -(0*2^6 + 1*2^5 + 1*2^4 + 0*2^3 + 0*2^2 + 1*2^1 + 1*2^0) = -51BASE10
+
+Using 2's complement: First bit is negative. [1] flip all: 10110011 --> 01001100 [2] add 1: 01001100 --> 01001101 = (1*2^6 + 1*2^3 + 1*2^2 + 1*2^0) = -77BASE10
+
+5.1. Using a byte of space, what happens when you add 1 to the unsigned binary number 11111111BASE2
+
+11111111BASE2+1 = 00000000BASE2 = 0BASE10 (overflow, rollover)
+
+5.2. What about adding adding 1BASE2 to the signed binary 01111111BASE2
+
+01111111BASE2+1 = 10000000BASE2 = -128BASE10 (overflow,rollover)
+
+6.1. Using a byte of space, what happens when you subtract 1 from the unsigned binary 00000000BASE2 (aka what is BASE2 of -1)
+
+00000000BASE2-1 = 11111111BASE2 (overflow, rollover)
+
+6.2. What about adding 1 to the signed binary 10000000BASE2
+
+10000000BASE2 +1 = 11111111BASE2=-127BASE10
+
+7. Explain and list # of bytes for the following types: int, float, double, char, bool:
+
+ - int: Integer. 4 bytes
+ - float: for smaller floating point numbers (see double). 4 bytes
+ - double: Double length float. 8 bytes
+ - char: single character (needs '' not ""). 1 byte
+ - bool: boolean (T/F aka 1/0). 1 byte
+
+8. Why can int types store chars, and visa-versa
+
+Because chars are stored as their ASCII equicalent (see http://www.asciitable.com/) which is just an integer.
+
+9. Which matters more: variable name or variable type
+
+Variable type. Name is not as crucial.
+
+10. In the following LOC's (not included) what will be printed
+
+7,7,12,12,19
+
+
